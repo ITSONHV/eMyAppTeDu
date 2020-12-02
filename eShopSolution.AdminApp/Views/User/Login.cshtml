@@ -1,0 +1,69 @@
+﻿@using eShopSolution.ViewModels.System.Users;
+@model LoginRequest;
+@{
+    Layout = null;
+}
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+-->
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <title>Đăng nhập hệ thống</title>
+
+    <!-- Meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Style -->
+    <link rel="stylesheet" href="/loginStyles/css/style.css" type="text/css" media="all" />
+</head>
+
+<body>
+    <!-- login form -->
+    <section class="w3l-login">
+        <div class="overlay">
+            <div class="wrapper">
+                <div class="logo">
+                    <a class="brand-logo" href="index.html">Thông tin đăng nhập</a>
+                </div>
+                <div class="form-section">
+                    <h3>Đăng nhập</h3>
+                    <form asp-action="Login" asp-controller="User" method="post" class="signin-form">
+                        <div class="form-input">
+                            <input type="text" asp-for="UserName" placeholder="Tên đăng nhập" required="" autofocus>
+                        </div>
+                        <div class="form-input">
+                            <input type="password" asp-for="Password" placeholder="Mật khẩu" required="">
+                        </div>
+                        <label class="check-remaind">
+                            <input asp-for="RememberMe" type="checkbox">
+                            <span class="checkmark"></span>
+                            <p class="remember">Nhớ mật khẩu</p>
+                        </label>
+                        <button type="submit" class="btn btn-primary theme-button mt-4">Đăng nhập</button>
+                        <div class="new-signup">
+                            <a href="#reload" class="signuplink">Quên mật khẩu?</a>
+                        </div>
+                    </form>
+                    <p class="signup">Bạn có tài khoản chưa ? <a href="#signup.html" class="signuplink">Đăng ký</a></p>
+                </div>
+            </div>
+        </div>
+        <div id='stars'></div>
+        <div id='stars2'></div>
+        <div id='stars3'></div>
+
+        <!-- copyright -->
+        <div class="copy-right">
+            <p>&copy; 2020 Giao diện đăng nhập. All rights reserved | Design by <a href="http://sonhoangvan.com/" target="_blank">HOÀNG SƠN</a></p>
+        </div>
+        <!-- //copyright -->
+    </section>
+
+    <!-- /login form -->
+</body>
+</html>
