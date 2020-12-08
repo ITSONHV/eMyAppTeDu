@@ -4,12 +4,12 @@ new Chart(document.getElementById("barchart"), {
 		labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
 		datasets: [{
 			data: [10,20,30,40,50,60,70,80],
-			label: 'Dataset 1',
+			label: 'Doanh thu',
 			backgroundColor: "#4755AB",
 			borderWidth: 1,
 		}, {
 			data: [30,10,70,15,30,20,70,80],
-			label: 'Dataset 2',
+			label: 'Chi phí',
 			backgroundColor: "#E7EDF6",
 			borderWidth: 1,
 		}]
