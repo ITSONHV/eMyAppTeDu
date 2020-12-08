@@ -27,7 +27,7 @@ Author URL: http://w3layouts.com
 
             <!-- logo start -->
             <div class="logo">
-                <h1><a href="index.html">Collective</a></h1>
+                <h1><a asp-action="Index" asp-controller="Home">NHÂN TRÍ</a></h1>
             </div>
 
             <!-- if logo is image enable this -->
@@ -40,7 +40,7 @@ Author URL: http://w3layouts.com
             <!-- //image logo -->
 
             <div class="logo-icon text-center">
-                <a href="index.html" title="logo"><img src="/assets/images/logo.png" alt="logo-icon"> </a>
+                <a asp-action="Index" asp-controller="Home" title="Nhân trí company"><img src="/assets/images/logo_cty.png" alt="logo-icon"> </a>
             </div>
             <!-- //logo end -->
 
@@ -49,27 +49,45 @@ Author URL: http://w3layouts.com
                 <!-- sidebar nav start -->
                 <ul class="nav nav-pills nav-stacked custom-nav">
                     <li class="active">
-                        <a href="index.html"><i class="fa fa-tachometer"></i><span> Dashboard</span></a>
+                        <a asp-action="Index" asp-controller="Home"><i class="fa fa-home" aria-hidden="true"></i><span> Trang chủ</span></a>
                     </li>
                     <li class="menu-list">
                         <a href="#">
-                            <i class="fa fa-cogs"></i>
-                            <span>Elements <i class="lnr lnr-chevron-right"></i></span>
+                            <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                            <span>Người sử dụng <i class="lnr lnr-chevron-right"></i></span>
                         </a>
                         <ul class="sub-menu-list">
-                            <li><a href="carousels.html">Carousels</a> </li>
-                            <li><a href="cards.html">Default cards</a> </li>
-                            <li><a href="people.html">People cards</a></li>
+                            @*<li><a href="carousels.html">Carousels</a> </li>*@
+                            <li><a asp-action="Index" asp-controller="User"> <i class="fa fa-users"></i> Danh sách</a></li>
+
+                            <li><a asp-action="Create" asp-controller="User"> <i class="fa fa-user-plus"></i> Tạo mới</a></li>
                         </ul>
                     </li>
-                    <li><a href="pricing.html"><i class="fa fa-table"></i> <span>Pricing tables</span></a></li>
-                    <li><a href="blocks.html"><i class="fa fa-th"></i> <span>Content blocks</span></a></li>
-                    <li><a href="forms.html"><i class="fa fa-file-text"></i> <span>Forms</span></a></li>
+                    <li class="menu-list">
+                        <a href="#"><i class="fa fa-address-card" aria-hidden="true"></i> <span>Hồ sơ nhân viên <i class="lnr lnr-chevron-right"></i></span></a>
+                        <ul class="sub-menu-list">
+                            <li><a asp-action="Index" asp-controller="User"><i class="fa fa-address-card-o" aria-hidden="true"></i> Danh sách</a></li>
+
+                            <li><a asp-action="Create" asp-controller="User"><i class="fa fa-user-plus"></i> Tạo mới</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-list">
+                        <a href="#"><i class="fa fa-calculator" aria-hidden="true"></i> <span>Công nhân viên <i class="lnr lnr-chevron-right"></i></span></a>
+                        <ul class="sub-menu-list">
+                            <li><a asp-action="Create" asp-controller="User"> <i class="fa fa-calculator" aria-hidden="true"></i> Tính công</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-list">
+                        <a href="#"><i class="fa fa-money" aria-hidden="true"></i> <span>Lương nhân viên <i class="lnr lnr-chevron-right"></i></span></a>
+                        <ul class="sub-menu-list">
+                            <li><a asp-action="Create" asp-controller="User"><i class="fa fa-calculator" aria-hidden="true"></i> Tính lương</a></li>
+                        </ul>
+                    </li>
                 </ul>
                 <!-- //sidebar nav end -->
                 <!-- toggle button start -->
                 <a class="toggle-btn">
-                    <i class="fa fa-angle-double-left menu-collapsed__left"><span>Collapse Sidebar</span></i>
+                    <i class="fa fa-angle-double-left menu-collapsed__left"><span>Thu nhỏ thanh Sidebar</span></i>
                     <i class="fa fa-angle-double-right menu-collapsed__right"></i>
                 </a>
                 <!-- //toggle button end -->
@@ -84,7 +102,7 @@ Author URL: http://w3layouts.com
                 <div class="navbar user-panel-top">
                     <div class="search-box">
                         <form action="#search-results.html" method="get">
-                            <input class="search-input" placeholder="Search Here..." type="search" id="search">
+                            <input class="search-input" placeholder="Tìm kiếm..." type="search" id="search">
                             <button class="search-submit" value=""><span class="fa fa-search"></span></button>
                         </form>
                     </div>
@@ -98,7 +116,7 @@ Author URL: http://w3layouts.com
                                     <ul class="dropdown-menu">
                                         <li>
                                             <div class="notification_header">
-                                                <h3>You have 3 new notifications</h3>
+                                                <h3>Bạn có 3 thông báo mới</h3>
                                             </div>
                                         </li>
                                         <li>
@@ -130,7 +148,7 @@ Author URL: http://w3layouts.com
                                         </li>
                                         <li>
                                             <div class="notification_bottom">
-                                                <a href="#all" class="bg-primary">See all notifications</a>
+                                                <a href="#all" class="bg-primary">Xem tất cả thông báo</a>
                                             </div>
                                         </li>
                                     </ul>
@@ -142,7 +160,7 @@ Author URL: http://w3layouts.com
                                     <ul class="dropdown-menu">
                                         <li>
                                             <div class="notification_header">
-                                                <h3>You have 4 new messages</h3>
+                                                <h3>Bạn có 4 tin nhắn mới</h3>
                                             </div>
                                         </li>
                                         <li>
@@ -183,7 +201,7 @@ Author URL: http://w3layouts.com
                                         </li>
                                         <li>
                                             <div class="notification_bottom">
-                                                <a href="#all" class="bg-primary">See all messages</a>
+                                                <a href="#all" class="bg-primary">Xem tất cả tin nhắn</a>
                                             </div>
                                         </li>
                                     </ul>
@@ -196,7 +214,7 @@ Author URL: http://w3layouts.com
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="dropdownMenu3" aria-haspopup="true"
                                        aria-expanded="false">
                                         <div class="profile_img">
-                                            <img src="/assets/images/profileimg.jpg" class="rounded-circle" alt="" />
+                                            <img src="/assets/images/userprofile.png" class="rounded-circle" alt="" />
                                             <div class="user-active">
                                                 <span></span>
                                             </div>
@@ -204,14 +222,13 @@ Author URL: http://w3layouts.com
                                     </a>
                                     <ul class="dropdown-menu drp-mnu" aria-labelledby="dropdownMenu3">
                                         <li class="user-info">
-                                            <h5 class="user-name">John Deo</h5>
-                                            <span class="status ml-2">Available</span>
+                                            <h5 class="user-name">@User.Identity.Name</h5>
+                                            <span class="status ml-2">đang đăng nhập</span>
                                         </li>
-                                        <li> <a href="#"><i class="lnr lnr-user"></i>My Profile</a> </li>
-                                        <li> <a href="#"><i class="lnr lnr-users"></i>1k Followers</a> </li>
-                                        <li> <a href="#"><i class="lnr lnr-cog"></i>Setting</a> </li>
-                                        <li> <a href="#"><i class="lnr lnr-heart"></i>100 Likes</a> </li>
-                                        <li class="logout"> <a href="#sign-up.html"><i class="fa fa-power-off"></i> Logout</a> </li>
+                                        <li> <a href="/Profile/Index"><i class="lnr lnr-user"></i>Thông tin</a> </li>
+                                        <li> <a href="#"><i class="lnr lnr-cog"></i>Cài đặt</a> </li>
+                                        <li class="logout"> <a href=@Url.Action("Logout","User",null)><i class="fa fa-power-off"></i> Đăng xuất</a> </li>
+                                        @*<form method="post" asp-action="User" asp-controller="Logout"> <button type="submit"><i class="fa fa-power-off"></i> Logout</button> </form>*@
                                     </ul>
                                 </li>
                             </ul>
@@ -227,14 +244,7 @@ Author URL: http://w3layouts.com
 
             <!-- content -->
             <div class="container-fluid content-top-gap">
-
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb my-breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-                    </ol>
-                </nav>
-                @RenderBody();
+                @RenderBody()
                 <!-- //modals -->
             </div>
             <!-- //content -->
@@ -244,8 +254,8 @@ Author URL: http://w3layouts.com
     <!--footer section start-->
     <footer class="dashboard">
         <p>
-            &copy 2020 Collective. All Rights Reserved | Design by <a href="https://w3layouts.com/" target="_blank"
-                                                                      class="text-primary">W3layouts.</a>
+            &copy 2020 Collective. All Rights Reserved | Design by <a href="#" target="_blank"
+                                                                      class="text-primary">Hoàng Sơn</a>
         </p>
     </footer>
     <!--footer section end-->
