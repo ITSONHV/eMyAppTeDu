@@ -44,24 +44,21 @@ namespace eShopSolution.AdminApp.Controllers
             {
                 return View(ModelState);
             }
-            var token = await _userApiClient.Authenticate(request);
-            if (token.IndexOf("token") == -1)
-            {
-                return RedirectToAction("Index", "Login");
-            }
-            var obj = JToken.Parse(token);
-            var userPrincipal = this.ValidateToken(obj.SelectToken("token").ToString());
+            var result = await _userApiClient.Authenticate(request);
+            var userPrincipal = this.ValidateToken(result.ResultObj);
+            //var obj = JToken.Parse(token);
+            // var userPrincipal = this.ValidateToken(obj.SelectToken("token").ToString());
             var authProperties = new AuthenticationProperties
             {
                 ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(10),
                 IsPersistent = false
             };
-            HttpContext.Session.SetString("token", obj.SelectToken("token").ToString());
+            // HttpContext.Session.SetString("token", obj.SelectToken("token").ToString());
+            HttpContext.Session.SetString("token", result.ResultObj);
             await HttpContext.SignInAsync(
-                       CookieAuthenticationDefaults.AuthenticationScheme,
-                       userPrincipal,
-                       authProperties);
-
+                        CookieAuthenticationDefaults.AuthenticationScheme,
+                        userPrincipal,
+                        authProperties);
             return RedirectToAction("Index", "Home");
         }
 
