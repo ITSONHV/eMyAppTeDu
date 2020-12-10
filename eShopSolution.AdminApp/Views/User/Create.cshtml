@@ -41,7 +41,7 @@
                     <div class="form-group col-md-2">
                         <i class="fa fa-calendar" aria-hidden="true"></i>
                         <label asp-for="Dob" class="control-label"></label>
-                        <input id="dateDob" type="date" asp-for="Dob" class="form-control" onload="getDate()" />
+                        <input id="dateDob" type="date" asp-for="Dob" class="form-control" />
                         <span asp-validation-for="Dob" class="text-danger"></span>
                     </div>
                     <div class="form-group col-md-2">
@@ -55,7 +55,7 @@
                     <div class="form-group col-md-4">
                         <i class="fa fa-user-circle-o" aria-hidden="true"></i>
                         <label asp-for="UserName" class="control-label"></label>
-                        <input asp-for="UserName" class="form-control" />
+                        <input asp-for="UserName" style="text-transform:uppercase" class="form-control" />
                         <span asp-validation-for="UserName" class="text-danger"></span>
                     </div>
                     <div class="form-group col-md-4">
@@ -84,14 +84,6 @@
         </div>
     </div>
 </section>
-<script>
-    debugger;
-    function getDate() {
-        debugger;
-        var today = new Date();
-        $("dateDob").value = ('0' + today.getDate()).slice(-2) + '/' + ('0' + (today.getMonth() + 1)).slice(-2) + '/' + today.getFullYear();
-    }
-</script>
 <!-- //forms -->
 @*<hr />
     <div class="row">

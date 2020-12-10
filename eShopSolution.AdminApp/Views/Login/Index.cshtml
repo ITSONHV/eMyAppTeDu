@@ -20,6 +20,7 @@ Author URL: http://w3layouts.com
 
     <!-- Style -->
     <link rel="stylesheet" href="/loginStyles/css/style.css" type="text/css" media="all" />
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -33,18 +34,22 @@ Author URL: http://w3layouts.com
                 <div class="form-section">
                     <h3>Đăng nhập</h3>
                     <form asp-action="Index" asp-controller="Login" method="post" class="signin-form">
+                        <i class="fa fa-user-circle" aria-hidden="true"></i>
+                        <label>Tên đăng nhập</label>
                         <div class="form-input">
-                            <input type="text" asp-for="UserName" placeholder="Tên đăng nhập" required="" autofocus>
+                            <input type="text" asp-for="UserName" style="text-transform:uppercase" required="" autofocus>
                         </div>
+                        <i class="fa fa-key" aria-hidden="true"></i>
+                        <label>Mật khẩu</label>
                         <div class="form-input">
-                            <input type="password" asp-for="Password" placeholder="Mật khẩu" required="">
+                            <input type="password" asp-for="Password" required="">
                         </div>
                         <label class="check-remaind">
                             <input asp-for="RememberMe" type="checkbox">
                             <span class="checkmark"></span>
                             <p class="remember">Nhớ mật khẩu</p>
                         </label>
-                        <button type="submit" class="btn btn-primary theme-button mt-4">Đăng nhập</button>
+                        <button type="submit" class="btn btn-primary theme-button mt-4"><i class="fa fa-sign-in" aria-hidden="true"></i> Đăng nhập</button>
                         <div class="new-signup">
                             <a href="#reload" class="signuplink">Quên mật khẩu ?</a>
                         </div>
@@ -59,7 +64,7 @@ Author URL: http://w3layouts.com
 
         <!-- copyright -->
         <div class="copy-right">
-            <p>&copy; 2020 Giao diện đăng nhập. All rights reserved | Design by <a href="http://sonhoangvan.com/" target="_blank">Hoàng Sơn</a></p>
+            <p>&copy; 2020 Giao diện đăng nhập. All rights reserved | Design by <a href="#" target="_blank">Hoàng Sơn</a></p>
         </div>
         <!-- //copyright -->
     </section>
