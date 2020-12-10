@@ -42,14 +42,15 @@
                                     <li class="list-group-item">@Html.HiddenFor(modelItem => item.Id)</li>
                                 </ul>
                                 @*@Html.ActionLink("Sửa", "Edit", "User", new { id = item.Id }, new { @class = "btn btn-style btn-primary mt-4" })*@
-                                <a href="@Url.Action("Edit","User",new {id = item.Id})"class="btn btn-style btn-primary mt-4"><i class="fa fa-pencil" aria-hidden="true"></i> Sửa</a>
-                                <a href="#" data-target="#exampleModalCenter" data-toggle="modal" class="btn btn-style btn-primary mt-4"><i class="fa fa-info-circle" aria-hidden="true"></i> Chi tiết</a>
+                                <a href="@Url.Action("Edit","User",new {id = item.Id})" class="btn btn-style btn-primary mt-4"><i class="fa fa-pencil" aria-hidden="true"></i> Sửa</a>
+                                <a href="@Url.Action("Details","User",new { id=item.Id})" class="btn btn-style btn-primary mt-4"><i class="fa fa-info-circle" aria-hidden="true"></i> Chi tiết</a>
                                 <a href="#" data-target="#exampleModalCenter" data-toggle="modal" class="btn btn-style btn-danger mt-4"><i class="fa fa-trash-o" aria-hidden="true"></i> Xóa</a>
                             </div>
                         </div>
                     </div>
                 }
             </div>
+            @await Component.InvokeAsync("Pager", Model)
         </div>
     </div>
 </div>
