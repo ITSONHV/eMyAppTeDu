@@ -36,12 +36,12 @@ namespace eShopSolution.Application.System.Users
         {
             var user = await _userManager.FindByNameAsync(request.UserName);
             if (user == null)
-                return null;
+                return new ApiErrorResult<string>("Tài khoản không tồn tại !");
             //throw new EShopException("Cannot find user name");
             var result = await _signInManager.PasswordSignInAsync(user, request.Password, request.RememberMe, true);
             if (!result.Succeeded)
             {
-                return new ApiErrorResult<string>("Đăng nhập không đúng");
+                return new ApiErrorResult<string>("Tài khoản hoặc mật khẩu không đúng");
             }
             var roles = await _userManager.GetRolesAsync(user);
             var claims = new[]
@@ -59,6 +59,24 @@ namespace eShopSolution.Application.System.Users
                expires: DateTime.Now.AddHours(3),
                signingCredentials: creds);
             return new ApiSuccessResult<string>(new JwtSecurityTokenHandler().WriteToken(token));
+        }
+
+        public async Task<ApiResult<bool>> Delete(Guid id)
+        {
+            var user = await _userManager.FindByIdAsync(id.ToString());
+            if (user == null)
+            {
+                return new ApiErrorResult<bool>("User không tồn tại");
+            }
+            if (user.UserName == "ADMINISTRATOR")
+            {
+                return new ApiErrorResult<bool>("Người dùng này không được phép xóa !");
+            }
+            var reult = await _userManager.DeleteAsync(user);
+            if (reult.Succeeded)
+                return new ApiSuccessResult<bool>();
+
+            return new ApiErrorResult<bool>("Xóa không thành công");
         }
 
         public async Task<ApiResult<UserViewModels>> GetById(Guid id)
@@ -83,10 +101,10 @@ namespace eShopSolution.Application.System.Users
 
         public async Task<ApiResult<PageResult<UserViewModels>>> GetUsersPaging(GetUserPagingRequest request)
         {
-            var query = _userManager.Users;
+            var query = _userManager.Users.Where(x => x.UserName != "ADMINISTRATOR");
             if (!string.IsNullOrEmpty(request.Keyword))
             {
-                query = query.Where(x => x.UserName.Contains(request.Keyword) || x.PhoneNumber.Contains(request.Keyword));
+                query = query.Where(x => (x.UserName.Contains(request.Keyword) || x.PhoneNumber.Contains(request.Keyword)) && (x.UserName != "ADMINISTRATOR"));
             }
             //3. Paging
             int totalRow = await query.CountAsync();

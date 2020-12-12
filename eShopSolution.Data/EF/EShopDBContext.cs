@@ -10,16 +10,16 @@ using Microsoft.AspNetCore.Identity;
 
 namespace eShopSolution.Data.EF
 {
-    public class EShopDBContext : IdentityDbContext<AppUser,AppRole,Guid>
+    public class EShopDBContext : IdentityDbContext<AppUser, AppRole, Guid>
     {
         public EShopDBContext(DbContextOptions options) : base(options)
         {
         }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //Configure using Fluent API
             modelBuilder.ApplyConfiguration(new CartConfiguration());
-
             modelBuilder.ApplyConfiguration(new AppConfigConfiguration());
             modelBuilder.ApplyConfiguration(new ProductConfiguration());
             modelBuilder.ApplyConfiguration(new CategoryConfiguration());
@@ -36,6 +36,7 @@ namespace eShopSolution.Data.EF
             modelBuilder.ApplyConfiguration(new AppUserConfiguration());
             modelBuilder.ApplyConfiguration(new AppRoleConfiguration());
             modelBuilder.ApplyConfiguration(new ProductImageConfiguration());
+            modelBuilder.ApplyConfiguration(new InfoEmployeeConfiguration());
             modelBuilder.Entity<IdentityUserClaim<Guid>>().ToTable("AppUserClaims");
             modelBuilder.Entity<IdentityUserRole<Guid>>().ToTable("AppUserRoles").HasKey(x => new { x.UserId, x.RoleId });
             modelBuilder.Entity<IdentityUserLogin<Guid>>().ToTable("AppUserLogins").HasKey(x => x.UserId);
@@ -56,7 +57,7 @@ namespace eShopSolution.Data.EF
         public DbSet<ProductInCategory> ProductInCategories { get; set; }
 
         public DbSet<Contact> Contacts { get; set; }
-
+        public DbSet<InfoEmployee> InfoEmployees { get; set; }
         public DbSet<Language> Languages { get; set; }
 
         public DbSet<Order> Orders { get; set; }

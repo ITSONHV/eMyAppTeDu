@@ -180,7 +180,7 @@ namespace eShopSolution.Data.Migrations
                         new
                         {
                             Id = new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"),
-                            ConcurrencyStamp = "83fc690e-bfa7-41ae-8999-663d892c291d",
+                            ConcurrencyStamp = "40efd9ba-11ac-4410-a305-23fe0d7e00d7",
                             Description = "Administrator role",
                             Name = "admin",
                             NormalizedName = "admin"
@@ -257,7 +257,7 @@ namespace eShopSolution.Data.Migrations
                         {
                             Id = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e5e05e8e-cef8-4012-a736-5fea2a6c33bc",
+                            ConcurrencyStamp = "77426a47-0fb0-4ea9-b672-6b6e6ae48cd6",
                             Dob = new DateTime(2020, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "tedu.international@gmail.com",
                             EmailConfirmed = true,
@@ -266,7 +266,7 @@ namespace eShopSolution.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "tedu.international@gmail.com",
                             NormalizedUserName = "admin",
-                            PasswordHash = "AQAAAAEAACcQAAAAECZ7ODanKJHS9b3kSRQcYB6IhcfZAnXco0m927jcEGhlN3w4QBHYpdbG6T5xAcNG9w==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHV39hx6g78sclAxwHqQL/LnXrkff7FmmpyQ99v77K3ocmsfcA0M8VZmIfXxiK0oaw==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -474,6 +474,105 @@ namespace eShopSolution.Data.Migrations
                     b.ToTable("Contacts");
                 });
 
+            modelBuilder.Entity("eShopSolution.Data.Entities.InfoEmployee", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
+                        .HasAnnotation("SqlServer:IdentitySeed", 1)
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CMND")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DAN_TOC")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DIA_CHI")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DTDD")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DVCS_ID")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EMAIL")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("GIOI_TINH")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("HON_NHAN")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("HO_TEN")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("LUONG_BH")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("LUONG_CB")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("MA_NV")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MA_PB")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("NGAY_CAP")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("NGAY_SINH")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("NOI_CAP")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NOI_SINH")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("QUE_QUAN")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("QUOC_TICH")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TON_GIAO")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("InfoEmployee");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CMND = "2491242225",
+                            DAN_TOC = "Kinh",
+                            DIA_CHI = "Quận 9",
+                            DTDD = "038504070",
+                            DVCS_ID = "VP",
+                            EMAIL = "vynguyen@gmail.com",
+                            GIOI_TINH = "Nữ",
+                            HON_NHAN = "Chưa kết hôn",
+                            LUONG_BH = 4500000m,
+                            LUONG_CB = 4500000m,
+                            MA_NV = "NV001",
+                            MA_PB = "Kế toán",
+                            NGAY_CAP = new DateTime(2013, 9, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NGAY_SINH = new DateTime(1996, 9, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NOI_CAP = "Lâm Đồng",
+                            NOI_SINH = "Lâm Đồng",
+                            QUE_QUAN = "Bình Định",
+                            QUOC_TICH = "Việt nam",
+                            TON_GIAO = "Không"
+                        });
+                });
+
             modelBuilder.Entity("eShopSolution.Data.Entities.Language", b =>
                 {
                     b.Property<string>("Id")
@@ -520,7 +619,7 @@ namespace eShopSolution.Data.Migrations
                     b.Property<DateTime>("OrderDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2020, 11, 18, 14, 17, 35, 940, DateTimeKind.Local).AddTicks(2076));
+                        .HasDefaultValue(new DateTime(2020, 12, 10, 21, 53, 3, 835, DateTimeKind.Local).AddTicks(4625));
 
                     b.Property<string>("ShipAddress")
                         .IsRequired()
@@ -616,7 +715,7 @@ namespace eShopSolution.Data.Migrations
                         new
                         {
                             Id = 1,
-                            DateCreated = new DateTime(2020, 11, 18, 14, 17, 35, 965, DateTimeKind.Local).AddTicks(5851),
+                            DateCreated = new DateTime(2020, 12, 10, 21, 53, 3, 856, DateTimeKind.Local).AddTicks(2413),
                             OriginalPrice = 100000m,
                             Price = 200000m,
                             Stock = 0,

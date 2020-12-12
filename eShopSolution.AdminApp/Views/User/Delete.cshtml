@@ -1,0 +1,68 @@
+﻿@model eShopSolution.ViewModels.System.Users.UserDeleteRequest
+
+@{
+    ViewData["Title"] = "Xóa người dùng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- breadcrumbs -->
+<nav aria-label="breadcrumb" class="mb-4">
+    <ol class="breadcrumb my-breadcrumb">
+        <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Trang chủ</a></li>
+        <li class="breadcrumb-item active"><a asp-action="Index" asp-controller="User">Người sử dụng</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Xóa người dùng</li>
+    </ol>
+</nav>
+<div>
+    <a class="btn btn-danger btn-style mt-4" asp-action="Index"><i class="fa fa-reply" aria-hidden="true"></i> Quay lại</a>
+</div>
+<hr />
+<h4 style="color:red;font-family:Arial;  font-style: italic;">Bạn có chắc chắn muốn xóa người này không ?</h4>
+<!-- //breadcrumbs -->
+<!-- forms -->
+<section class="forms">
+    <div class="card card_border py-2 mb-4">
+        <div class="card-body">
+            <form asp-action="Delete" method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                        <label asp-for="FirstName" class="control-label"></label>
+                        <input asp-for="FirstName" class="form-control" readonly />
+                    </div>
+                    <div class="form-group col-md-4">
+                        <i class="fa fa-user-o" aria-hidden="true"></i>
+                        <label asp-for="LastName" class="control-label"></label>
+                        <input asp-for="LastName" class="form-control" readonly />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-2">
+                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                        <label asp-for="Dob" class="control-label"></label>
+                        <input id="dateDob" type="date" asp-for="Dob" class="form-control" readonly />
+                    </div>
+                    <div class="form-group col-md-2">
+                        <i class="fa fa-phone-square" aria-hidden="true"></i>
+                        <label asp-for="PhoneNumber" class="control-label"></label>
+                        <input asp-for="PhoneNumber" class="form-control" readonly />
+                    </div>
+                    <div class="form-group col-md-4">
+                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                        <label asp-for="Email" class="control-label"></label>
+                        <input asp-for="Email" class="form-control" readonly />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                        <label asp-for="UserName" class="control-label"></label>
+                        <input asp-for="UserName" class="form-control" readonly />
+                    </div>
+                </div>
+                <button type="submit" href="@Url.Action("Delete","User",new {id=Model.Id })" class="btn btn-danger btn-style mt-4"><i class="fa fa-trash" aria-hidden="true"></i> Xóa</button>
+            </form>
+        </div>
+    </div>
+</section>

@@ -113,8 +113,31 @@ namespace eShopSolution.Data.Extensions
                 RoleId = roleId,
                 UserId = adminId
             });
+            modelBuilder.Entity<InfoEmployee>().HasData(
+            new InfoEmployee()
+            {
+                Id = new Random().Next(1, 100),
+                DVCS_ID = "VP",
+                MA_NV = "NV001",
+                HO_TEN = "Nguyễn Thị Tường Vy",
+                MA_PB = "Kế toán",
+                NGAY_SINH = new DateTime(1996, 09, 25),
+                GIOI_TINH = "Nữ",
+                TON_GIAO = "Không",
+                DAN_TOC = "Kinh",
+                HON_NHAN = "Chưa kết hôn",
+                QUOC_TICH = "Việt nam",
+                CMND = "2491242225",
+                NGAY_CAP = new DateTime(2013, 09, 13),
+                NOI_CAP = "Lâm Đồng",
+                QUE_QUAN = "Bình Định",
+                NOI_SINH = "Lâm Đồng",
+                DTDD = "038504070",
+                EMAIL = "vynguyen@gmail.com",
+                DIA_CHI = "Quận 9",
+                LUONG_CB = 4500000,
+                LUONG_BH = 4500000
+            });
         }
-
-
     }
 }
