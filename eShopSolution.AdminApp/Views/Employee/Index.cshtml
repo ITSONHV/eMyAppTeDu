@@ -1,0 +1,134 @@
+﻿@using eShopSolution.ViewModels.Common
+@model PageResult<eShopSolution.ViewModels.System.Employees.EmployeeViewModel>
+@{
+    ViewData["Title"] = "Danh sách nhân viên";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<nav aria-label="breadcrumb" class="mb-4">
+    <ol class="breadcrumb my-breadcrumb">
+        <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Home</a></li>
+        <li class="breadcrumb-item"><a asp-action="Index" asp-controller="User">Hồ sơ nhân viên</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Danh sách nhân viên</li>
+    </ol>
+</nav>
+<section class="forms">
+    <div class="card card_border py-2 mb-4">
+        <div class="card-body">
+            <form asp-action="Index" method="get">
+                <div class="form-row">
+                    <div class="form-group col-md-8">
+                        <a class="btn btn-success" asp-action="Create" asp-controller="Employee"><i class="fa fa-user-plus" aria-hidden="true"></i> Tạo mới nhân viên</a>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <input class="search-input" type="search" id="search" placeholder="Tìm kiếm..." value="@ViewBag.Keyword" name="keyword" />
+                        <button type="submit" class="search-submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    </div>
+                    <div class="form-group col-md">
+                        <button type="button" onclick="window.location.href='/Employee/Index'" class="btn btn-info"><i class="fa fa-refresh" aria-hidden="true"></i> Reset</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<div class="pricing-version-2">
+    <div class="card card_border mb-5">
+        <div class="cards__heading">
+            <h3>Danh sách nhân viên<span></span></h3>
+        </div>
+        <div class="card-body">
+            <div class="row px-2">
+                <!-- Table #1  -->
+                @foreach (var item in Model.Items)
+                {
+                    <div class="col-lg-4 col-md-6 px-2 mb-4">
+                        <div class="card text-center card__hover">
+                            <div class="card-header">
+                                <h3 class="display-4"><span class="currency"></span><span class="period"></span></h3>
+                            </div>
+                            <div class="card-block">
+                                <h4 class="card-title" style="font-style:italic;font-weight:bold">
+                                    @Html.DisplayFor(modelItem => item.HO_TEN)
+                                </h4>
+                                <ul class="list-group">
+                                    <li class="list-group-item">Mã: @Html.DisplayFor(modelItem => item.MA_NV)</li>
+                                    <li class="list-group-item">Ngày sinh: @Html.DisplayFor(modelItem => item.NGAY_SINH)</li>
+                                    <li class="list-group-item">Điện thoại: @Html.DisplayFor(modelItem => item.DTDD)</li>
+                                    <li class="list-group-item">Email: @Html.DisplayFor(modelItem => item.EMAIL)</li>
+                                    <li class="list-group-item">@Html.HiddenFor(modelItem => item.Id)</li>
+                                </ul>
+                                <div class="people-social mt-3">
+                                    <a href="#team" class="facebook"><span class="fa fa-facebook"></span></a>
+                                    <a href="#team" class="twitter"><span class="fa fa-envelope-o"></span></a>
+                                    <a href="#team" class="linkedin"><span class="fa fa-linkedin"></span></a>
+                                </div>
+                                @*@Html.ActionLink("Sửa", "Edit", "User", new { id = item.Id }, new { @class = "btn btn-style btn-primary mt-4" })*@
+                                <a href="@Url.Action("Edit","Employee",new {id = item.Id})" class="btn btn-style btn-primary mt-4"><i class="fa fa-pencil" aria-hidden="true"></i> Sửa</a>
+                                <a href="@Url.Action("Details","Employee",new { id=item.Id})" class="btn btn-style btn-primary mt-4"><i class="fa fa-info-circle" aria-hidden="true"></i> Chi tiết</a>
+                                <a href="@Url.Action("Delete","Employee",new { id=item.Id})" class="btn btn-style btn-danger mt-4"><i class="fa fa-trash-o" aria-hidden="true"></i> Xóa</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            @await Component.InvokeAsync("Pager", Model)
+        </div>
+        @*<div id='layout_div' style='width:600px; height:600px; margin:20px;'></div>*@
+    </div>
+</div>
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" style="color:orange" id="exampleModalLongTitle"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Thông báo !</h5>
+                <button type="button" style="color:red" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="color:red">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>  Chức năng hiện tại chưa có !
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-window-close" aria-hidden="true"></i> Đóng</button>
+                @*<button type="button" class="btn btn-success">Save changes</button>*@
+            </div>
+        </div>
+    </div>
+</div>
+@*<script type="text/javascript" charset="utf-8">
+    webix.ui({
+        container: "layout_div",
+        id: "layout",
+        height: 550,
+        width: 700,
+        rows: [
+            { template: "row 1", height: 35 },
+            { template: "row 1" },
+            { view: "resizer" },
+            { template: "row 2" },
+            { view: "resizer" },
+            {
+                cols: [
+                    {
+                        id: "a1",
+                        view: "button",
+                        label:"Test",
+                        width: 150
+                    },
+                    {
+                        view: "resizer",
+                        id: "resizer"
+                    },
+                    {
+                        template: "column 2"
+                    },
+                    {
+                        template: "column 3"
+                    }
+                ]
+            }
+        ]
+    }).show();
+</script>*@

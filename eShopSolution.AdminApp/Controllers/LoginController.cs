@@ -45,6 +45,11 @@ namespace eShopSolution.AdminApp.Controllers
                 return View(ModelState);
             }
             var result = await _userApiClient.Authenticate(request);
+            if (!result.IsSuccessed)
+            {
+                ModelState.AddModelError("", "Tài khoản hoặc mật khẩu không đúng !");
+                return View();
+            }
             var userPrincipal = this.ValidateToken(result.ResultObj);
             //var obj = JToken.Parse(token);
             // var userPrincipal = this.ValidateToken(obj.SelectToken("token").ToString());

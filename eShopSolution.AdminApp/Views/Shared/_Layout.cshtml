@@ -14,7 +14,8 @@ Author URL: http://w3layouts.com
 
     <!-- Template CSS -->
     <link rel="stylesheet" href="/assets/css/style-starter.css">
-
+    <script src="/webix/codebase/webix.js"></script>
+    <link rel="stylesheet" href="/webix/codebase/skins/compact.css">
     <!-- google fonts -->
     <link href="//fonts.googleapis.com/css?family=Nunito:300,400,600,700,800,900&display=swap" rel="stylesheet">
 </head>
@@ -66,9 +67,9 @@ Author URL: http://w3layouts.com
                     <li class="menu-list">
                         <a href="#"><i class="fa fa-address-card" aria-hidden="true"></i> <span>Hồ sơ nhân viên <i class="lnr lnr-chevron-right"></i></span></a>
                         <ul class="sub-menu-list">
-                            <li><a asp-action="Index" asp-controller="User"><i class="fa fa-address-card-o" aria-hidden="true"></i> Danh sách</a></li>
+                            <li><a asp-action="Index" asp-controller="Employee"><i class="fa fa-address-card-o" aria-hidden="true"></i> Danh sách</a></li>
 
-                            <li><a asp-action="Create" asp-controller="User"><i class="fa fa-user-plus"></i> Tạo mới</a></li>
+                            <li><a asp-action="Create" asp-controller="Employee"><i class="fa fa-user-plus"></i> Tạo mới</a></li>
                         </ul>
                     </li>
                     <li class="menu-list">
@@ -100,12 +101,12 @@ Author URL: http://w3layouts.com
             <!-- notification menu start -->
             <div class="menu-right">
                 <div class="navbar user-panel-top">
-                    <div class="search-box">
+                    @*<div class="search-box">
                         <form action="#search-results.html" method="get">
                             <input class="search-input" placeholder="Tìm kiếm..." type="search" id="search">
                             <button class="search-submit" value=""><span class="fa fa-search"></span></button>
                         </form>
-                    </div>
+                    </div>*@
                     <div class="user-dropdown-details d-flex">
                         <div class="profile_details_left">
                             <ul class="nofitications-dropdown">
@@ -287,7 +288,6 @@ Author URL: http://w3layouts.com
 
     <script src="/assets/js/jquery-3.3.1.min.js"></script>
     <script src="/assets/js/jquery-1.10.2.min.js"></script>
-
     <!-- chart js -->
     <script src="/assets/js/Chart.min.js"></script>
     <script src="/assets/js/utils.js"></script>
@@ -299,7 +299,6 @@ Author URL: http://w3layouts.com
 
     <script src="/assets/js/jquery.nicescroll.js"></script>
     <script src="/assets/js/scripts.js"></script>
-
     <!-- close script -->
     <script>
         var closebtns = document.getElementsByClassName("close-grid");
@@ -332,5 +331,6 @@ Author URL: http://w3layouts.com
     <!--// loading-gif Js -->
     <!-- Bootstrap Core JavaScript -->
     <script src="/assets/js/bootstrap.min.js"></script>
+    @RenderSection("Scripts", required: false)
 </body>
 </html>
