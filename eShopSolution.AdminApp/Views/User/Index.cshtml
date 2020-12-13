@@ -76,8 +76,9 @@
                                 </ul>
                                 @*@Html.ActionLink("Sửa", "Edit", "User", new { id = item.Id }, new { @class = "btn btn-style btn-primary mt-4" })*@
                                 <a href="@Url.Action("Edit","User",new {id = item.Id})" class="btn btn-style btn-primary mt-4"><i class="fa fa-pencil" aria-hidden="true"></i> Sửa</a>
-                                <a href="@Url.Action("Details","User",new { id=item.Id})" class="btn btn-style btn-primary mt-4"><i class="fa fa-info-circle" aria-hidden="true"></i> Chi tiết</a>
+                                <a href="@Url.Action("Details","User",new { id=item.Id})" class="btn btn-style btn-primary mt-4"><i class="fa fa-info-circle" aria-hidden="true"></i> Xem</a>
                                 <a href="@Url.Action("Delete","User",new { id=item.Id})" class="btn btn-style btn-danger mt-4"><i class="fa fa-trash-o" aria-hidden="true"></i> Xóa</a>
+                                <a href="@Url.Action("RoleAssign","User",new { id=item.Id})" class="btn btn-style btn-info mt-4"><i class="fa fa-cogs" aria-hidden="true"></i> Quyền</a>
                             </div>
                         </div>
                     </div>
