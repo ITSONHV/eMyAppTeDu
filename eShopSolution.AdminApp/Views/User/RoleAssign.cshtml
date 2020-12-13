@@ -1,0 +1,57 @@
+﻿@model eShopSolution.ViewModels.System.Users.RoleAssignRequest
+
+@{
+    ViewData["Title"] = "Phân quyền";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- breadcrumbs -->
+<nav aria-label="breadcrumb" class="mb-4">
+    <ol class="breadcrumb my-breadcrumb">
+        <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Trang chủ</a></li>
+        <li class="breadcrumb-item active"><a asp-action="Index" asp-controller="User">Người sử dụng</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Phân quyền</li>
+    </ol>
+</nav>
+<div>
+    <a class="btn btn-danger btn-style mt-4" asp-action="Index"><i class="fa fa-reply" aria-hidden="true"></i> Quay lại</a>
+</div>
+<hr />
+
+<!-- //breadcrumbs -->
+<!-- forms -->
+<section class="forms">
+    <div class="card card_border py-2 mb-4">
+        <div class="card-body">
+            <form asp-action="RoleAssign">
+                @*<input type="hidden" asp-for="Id" />*@
+                @for (var i = 0; i < Model.Roles.Count; i++)
+                {
+                    <div class="form-row">
+                        <div class="form-group col-md-2">
+                            <label>
+                                <i>Mã quyền:</i><b> @Model.Roles[i].Name</b>
+                            </label>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>
+                                <i>Tên quyền:</i> <b>@Model.Roles[i].Description</b>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                <i>Chọn quyền:</i>
+                                <input type="checkbox" asp-for="Roles[i].Selected" />
+                                <input type="hidden" asp-for="Roles[i].Id" />
+                                <input type="hidden" asp-for="Roles[i].Name" />
+                                @*<input type="hidden" asp-for="Roles[i].Description" />*@
+                            </label>
+                        </div>
+                    </div>
+                }
+                <div class="form-row">
+                    <button type="submit" class="btn btn-primary btn-style mt-4"><i class="fa fa-floppy-o" aria-hidden="true"></i> Lưu lại</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
