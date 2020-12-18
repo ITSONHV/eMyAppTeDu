@@ -52,24 +52,12 @@ Author URL: http://w3layouts.com
                     <li class="active">
                         <a asp-action="Index" asp-controller="Home"><i class="fa fa-home" aria-hidden="true"></i><span> Trang chủ</span></a>
                     </li>
-                    <li  class="menu-list">
-                        <a href="#">
-                            <i class="fa fa-user-circle-o" aria-hidden="true"></i>
-                            <span>Người sử dụng <i class="lnr lnr-chevron-right"></i></span>
-                        </a>
-                        <ul class="sub-menu-list">
-                            @*<li><a href="carousels.html">Carousels</a> </li>*@
-                            <li><a asp-action="Index" asp-controller="User"> <i class="fa fa-users"></i> Danh sách</a></li>
-
-                            <li><a asp-action="Create" asp-controller="User"> <i class="fa fa-user-plus"></i> Tạo mới</a></li>
-                        </ul>
-                    </li>
                     <li class="menu-list">
                         <a href="#"><i class="fa fa-address-card" aria-hidden="true"></i> <span>Hồ sơ nhân viên <i class="lnr lnr-chevron-right"></i></span></a>
                         <ul class="sub-menu-list">
-                            <li><a asp-action="Index" asp-controller="Employee"><i class="fa fa-address-card-o" aria-hidden="true"></i> Danh sách</a></li>
+                            <li><a asp-action="Index" asp-controller="Employee"><i class="fa fa-address-card-o" aria-hidden="true"></i> Danh sách nhân viên</a></li>
 
-                            <li><a asp-action="Create" asp-controller="Employee"><i class="fa fa-user-plus"></i> Tạo mới</a></li>
+                            <li><a asp-action="Create" asp-controller="Employee"><i class="fa fa-user-plus"></i> Tạo mới nhân viên</a></li>
                         </ul>
                     </li>
                     <li class="menu-list">
@@ -82,6 +70,26 @@ Author URL: http://w3layouts.com
                         <a href="#"><i class="fa fa-money" aria-hidden="true"></i> <span>Lương nhân viên <i class="lnr lnr-chevron-right"></i></span></a>
                         <ul class="sub-menu-list">
                             <li><a asp-action="Create" asp-controller="User"><i class="fa fa-calculator" aria-hidden="true"></i> Tính lương</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-list">
+                        <a href="#"><i class="fa fa-dropbox" aria-hidden="true"></i> <span>Sản phẩm <i class="lnr lnr-chevron-right"></i></span></a>
+                        <ul class="sub-menu-list">
+                            <li><a asp-action="Index" asp-controller="Product"><i class="fa fa-list" aria-hidden="true"></i> Danh sách sản phẩm</a></li>
+
+                            <li><a asp-action="Create" asp-controller="Product"><i class="fa fa-cart-plus" aria-hidden="true"></i> Tạo mới sản phẩm</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-list">
+                        <a href="#">
+                            <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                            <span>Người sử dụng <i class="lnr lnr-chevron-right"></i></span>
+                        </a>
+                        <ul class="sub-menu-list">
+                            @*<li><a href="carousels.html">Carousels</a> </li>*@
+                            <li><a asp-action="Index" asp-controller="User"> <i class="fa fa-users"></i> Danh sách</a></li>
+
+                            <li><a asp-action="Create" asp-controller="User"> <i class="fa fa-user-plus"></i> Tạo mới</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -156,58 +164,58 @@ Author URL: http://w3layouts.com
                                     </ul>
                                 </li>
                                 @*<li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                        <i class="fa fa-comment-o"></i><span class="badge blue">4</span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <div class="notification_header">
-                                <h3>Bạn có 4 tin nhắn mới</h3>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="#" class="grid">
-                                <div class="user_img"><img src="/assets/images/avatar1.jpg" alt=""></div>
-                                <div class="notification_desc">
-                                    <p>Johnson purchased template</p>
-                                    <span>Just Now</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="odd">
-                            <a href="#" class="grid">
-                                <div class="user_img"><img src="/assets/images/avatar2.jpg" alt=""></div>
-                                <div class="notification_desc">
-                                    <p>New customer registered </p>
-                                    <span>1 hour ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="grid">
-                                <div class="user_img"><img src="/assets/images/avatar3.jpg" alt=""></div>
-                                <div class="notification_desc">
-                                    <p>Lorem ipsum dolor sit amet </p>
-                                    <span>2 hours ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="grid">
-                                <div class="user_img"><img src="/assets/images/avatar1.jpg" alt=""></div>
-                                <div class="notification_desc">
-                                    <p>Johnson purchased template</p>
-                                    <span>Just Now</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <div class="notification_bottom">
-                                <a href="#all" class="bg-primary">Xem tất cả tin nhắn</a>
-                            </div>
-                        </li>
-                    </ul>
-                </li>*@
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                            <i class="fa fa-comment-o"></i><span class="badge blue">4</span>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <div class="notification_header">
+                                                    <h3>Bạn có 4 tin nhắn mới</h3>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="grid">
+                                                    <div class="user_img"><img src="/assets/images/avatar1.jpg" alt=""></div>
+                                                    <div class="notification_desc">
+                                                        <p>Johnson purchased template</p>
+                                                        <span>Just Now</span>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="odd">
+                                                <a href="#" class="grid">
+                                                    <div class="user_img"><img src="/assets/images/avatar2.jpg" alt=""></div>
+                                                    <div class="notification_desc">
+                                                        <p>New customer registered </p>
+                                                        <span>1 hour ago</span>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="grid">
+                                                    <div class="user_img"><img src="/assets/images/avatar3.jpg" alt=""></div>
+                                                    <div class="notification_desc">
+                                                        <p>Lorem ipsum dolor sit amet </p>
+                                                        <span>2 hours ago</span>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="grid">
+                                                    <div class="user_img"><img src="/assets/images/avatar1.jpg" alt=""></div>
+                                                    <div class="notification_desc">
+                                                        <p>Johnson purchased template</p>
+                                                        <span>Just Now</span>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <div class="notification_bottom">
+                                                    <a href="#all" class="bg-primary">Xem tất cả tin nhắn</a>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>*@
                             </ul>
                         </div>
                         <div class="profile_details">

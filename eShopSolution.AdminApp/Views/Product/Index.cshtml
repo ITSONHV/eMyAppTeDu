@@ -1,0 +1,171 @@
+﻿@using eShopSolution.ViewModels.Common;
+@model PageResult<eShopSolution.ViewModels.Catalog.Products.ProductViewModel>
+@{
+    ViewData["Title"] = "Danh sách sản phẩm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Scripts{
+    <script>
+        setTimeout(function () {
+            $('#msgAlert').fadeOut('slow');
+        }, 2000);
+    </script>
+}
+<nav aria-label="breadcrumb" class="mb-4">
+    <ol class="breadcrumb my-breadcrumb">
+        <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Home</a></li>
+        <li class="breadcrumb-item"><a asp-action="Index" asp-controller="User">Sản phẩm</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Danh sách sản phẩm</li>
+    </ol>
+</nav>
+<section class="forms">
+    <div class="card card_border py-2 mb-4">
+        <div class="card-body">
+            <form asp-action="Index" method="get">
+                <div class="form-row">
+                    <div class="form-group col-md-8">
+                        <a class="btn btn-success" asp-action="Create" asp-controller="Product"><i class="fa fa-cart-plus" aria-hidden="true"></i> Thêm sản phẩm</a>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <input class="search-input" type="search" id="search" placeholder="Tìm kiếm..." value="@ViewBag.Keyword" name="keyword" />
+                        <button type="submit" class="search-submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    </div>
+                    <div class="form-group col-md">
+                        <button type="button" onclick="window.location.href='/User/Index'" class="btn btn-info"><i class="fa fa-refresh" aria-hidden="true"></i> Reset</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<div class="row px-3">
+    @if (ViewBag.SuccessMsg != null)
+    {
+        <div id="msgAlert" class="alert alert-success" role="alert">
+            @ViewBag.SuccessMsg
+        </div>
+    }
+</div>
+<!-- //pricing version 2 -->
+<!-- //pricing -->
+<div class="pricing-version-2">
+    <div class="card card_border mb-5">
+        <div class="cards__heading">
+            <h3>Danh sách sản phẩm<span></span></h3>
+        </div>
+        <div class="card-body">
+            <div class="row px-2">
+                <!-- Table #1  -->
+                @foreach (var item in Model.Items)
+                {
+                    <div class="col-lg-4 col-md-6 px-2 mb-4">
+                        <div class="card text-center card__hover">
+                            <div class="card-header">
+                                <h3 class="display-4"><span class="currency"></span><span class="period"></span></h3>
+                            </div>
+                            <div class="card-block">
+                                <h4 class="card-title">
+                                    <b>Mã hàng:</b> @Html.DisplayFor(modelItem => item.Id)
+                                </h4>
+                                <ul class="list-group">
+                                    <li class="list-group-item"><b>Tên hàng:</b> @Html.DisplayFor(modelItem => item.Name)</li>
+                                    <li class="list-group-item"><b>Giá bán:</b> @Html.DisplayFor(modelItem => item.Price)</li>
+                                    <li class="list-group-item"><b>Giá nhập:</b> @Html.DisplayFor(modelItem => item.OriginalPrice)</li>
+                                    <li class="list-group-item"><b>Số lượng tồn:</b> @Html.DisplayFor(modelItem => item.Stock)</li>
+                                    <li class="list-group-item">@Html.HiddenFor(modelItem => item.Id)</li>
+                                </ul>
+                                @*@Html.ActionLink("Sửa", "Edit", "User", new { id = item.Id }, new { @class = "btn btn-style btn-primary mt-4" })*@
+                                <a href="@Url.Action("Edit","Product",new {id = item.Id})" class="btn btn-style btn-primary mt-4"><i class="fa fa-pencil" aria-hidden="true"></i> Sửa</a>
+                                <a href="@Url.Action("Details","Product",new { id=item.Id})" class="btn btn-style btn-primary mt-4"><i class="fa fa-info-circle" aria-hidden="true"></i> Xem</a>
+                                <a href="@Url.Action("Delete","Product",new { id=item.Id})" class="btn btn-style btn-danger mt-4"><i class="fa fa-trash-o" aria-hidden="true"></i> Xóa</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            @await Component.InvokeAsync("Pager", Model)
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" style="color:orange" id="exampleModalLongTitle"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Thông báo !</h5>
+                <button type="button" style="color:red" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="color:red">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>  Chức năng hiện tại chưa có !
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-window-close" aria-hidden="true"></i> Đóng</button>
+                @*<button type="button" class="btn btn-success">Save changes</button>*@
+            </div>
+        </div>
+    </div>
+</div>
+<!-- //pricing version 2 -->
+<!-- //pricing -->
+<!-- //people -->
+@*<p>
+        <a asp-action="Create">Create New</a>
+    </p>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    Tên
+                </th>
+                <th>
+                    Họ
+                </th>
+                <th>
+                    Số điện thoại
+                </th>
+                <th>
+                    Tên đăng nhập
+                </th>
+                <th>
+                    Email
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Items)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PhoneNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>*@
