@@ -23,15 +23,20 @@
         <div class="card-body">
             <form asp-action="Index" method="get">
                 <div class="form-row">
-                    <div class="form-group col-md-8">
+                    <div class="form-group col-md-6">
                         <a class="btn btn-success" asp-action="Create" asp-controller="Product"><i class="fa fa-cart-plus" aria-hidden="true"></i> Thêm sản phẩm</a>
                     </div>
+                    <div class="form-group col-md-2">
+                        <select id="inputState" name="categoryId" onchange="this.form.submit()" asp-items="@ViewBag.Categories" class="form-control input-style">
+                            <option>--Chọn danh mục--</option>
+                        </select>
+                    </div>
                     <div class="form-group col-md-3">
-                        <input class="search-input" type="search" id="search" placeholder="Tìm kiếm..." value="@ViewBag.Keyword" name="keyword" />
+                        <input class="search-input input-style" type="search" id="search" placeholder="Tìm kiếm..." value="@ViewBag.Keyword" name="keyword" />
                         <button type="submit" class="search-submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                     </div>
                     <div class="form-group col-md">
-                        <button type="button" onclick="window.location.href='/User/Index'" class="btn btn-info"><i class="fa fa-refresh" aria-hidden="true"></i> Reset</button>
+                        <button type="button" onclick="window.location.href='/User/Index'" class="btn btn-info input-style"><i class="fa fa-refresh" aria-hidden="true"></i> Reset</button>
                     </div>
                 </div>
             </form>
@@ -41,9 +46,9 @@
 <div class="row px-3">
     @if (ViewBag.SuccessMsg != null)
     {
-        <div id="msgAlert" class="alert alert-success" role="alert">
-            @ViewBag.SuccessMsg
-        </div>
+    <div id="msgAlert" class="alert alert-success" role="alert">
+        @ViewBag.SuccessMsg
+    </div>
     }
 </div>
 <!-- //pricing version 2 -->
@@ -58,29 +63,30 @@
                 <!-- Table #1  -->
                 @foreach (var item in Model.Items)
                 {
-                    <div class="col-lg-4 col-md-6 px-2 mb-4">
-                        <div class="card text-center card__hover">
-                            <div class="card-header">
-                                <h3 class="display-4"><span class="currency"></span><span class="period"></span></h3>
-                            </div>
-                            <div class="card-block">
-                                <h4 class="card-title">
-                                    <b>Mã hàng:</b> @Html.DisplayFor(modelItem => item.Id)
-                                </h4>
-                                <ul class="list-group">
-                                    <li class="list-group-item"><b>Tên hàng:</b> @Html.DisplayFor(modelItem => item.Name)</li>
-                                    <li class="list-group-item"><b>Giá bán:</b> @Html.DisplayFor(modelItem => item.Price)</li>
-                                    <li class="list-group-item"><b>Giá nhập:</b> @Html.DisplayFor(modelItem => item.OriginalPrice)</li>
-                                    <li class="list-group-item"><b>Số lượng tồn:</b> @Html.DisplayFor(modelItem => item.Stock)</li>
-                                    <li class="list-group-item">@Html.HiddenFor(modelItem => item.Id)</li>
-                                </ul>
-                                @*@Html.ActionLink("Sửa", "Edit", "User", new { id = item.Id }, new { @class = "btn btn-style btn-primary mt-4" })*@
-                                <a href="@Url.Action("Edit","Product",new {id = item.Id})" class="btn btn-style btn-primary mt-4"><i class="fa fa-pencil" aria-hidden="true"></i> Sửa</a>
-                                <a href="@Url.Action("Details","Product",new { id=item.Id})" class="btn btn-style btn-primary mt-4"><i class="fa fa-info-circle" aria-hidden="true"></i> Xem</a>
-                                <a href="@Url.Action("Delete","Product",new { id=item.Id})" class="btn btn-style btn-danger mt-4"><i class="fa fa-trash-o" aria-hidden="true"></i> Xóa</a>
-                            </div>
+                <div class="col-lg-4 col-md-6 px-2 mb-4">
+                    <div class="card text-center card__hover">
+                        <div class="card-header">
+                            <h3 class="display-4"><span class="currency"></span><span class="period"></span></h3>
+                        </div>
+                        <div class="card-block">
+                            <h4 class="card-title">
+                                <b>Mã hàng:</b> @Html.DisplayFor(modelItem => item.Id)
+                            </h4>
+                            <ul class="list-group">
+                                <li class="list-group-item"><b>Tên hàng:</b> @Html.DisplayFor(modelItem => item.Name)</li>
+                                <li class="list-group-item"><b>Giá bán:</b> @Html.DisplayFor(modelItem => item.Price)</li>
+                                <li class="list-group-item"><b>Giá nhập:</b> @Html.DisplayFor(modelItem => item.OriginalPrice)</li>
+                                <li class="list-group-item"><b>Số lượng tồn:</b> @Html.DisplayFor(modelItem => item.Stock)</li>
+                                <li class="list-group-item">@Html.HiddenFor(modelItem => item.Id)</li>
+                            </ul>
+                            @*@Html.ActionLink("Sửa", "Edit", "User", new { id = item.Id }, new { @class = "btn btn-style btn-primary mt-4" })*@
+                            <a href="@Url.Action("Edit","Product",new {id = item.Id})" class="btn btn-style btn-primary mt-4"><i class="fa fa-pencil" aria-hidden="true"></i> Sửa</a>
+                            <a href="@Url.Action("Details","Product",new { id=item.Id})" class="btn btn-style btn-primary mt-4"><i class="fa fa-info-circle" aria-hidden="true"></i> Xem</a>
+                            <a href="@Url.Action("Delete","Product",new { id=item.Id})" class="btn btn-style btn-danger mt-4"><i class="fa fa-trash-o" aria-hidden="true"></i> Xóa</a>
+                            <a href="@Url.Action("CategoryAssign","Product",new { id=item.Id})" class="btn btn-style btn-info mt-4"><i class="fa fa-cogs" aria-hidden="true"></i> Gán danh mục</a>
                         </div>
                     </div>
+                </div>
                 }
             </div>
             @await Component.InvokeAsync("Pager", Model)

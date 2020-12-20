@@ -8,10 +8,13 @@ namespace eShopSolution.ViewModels.Catalog.Products
     public class ProductViewModel
     {
         public int Id { set; get; }
+
         [DisplayFormat(DataFormatString = "{0:#,###} VND", ApplyFormatInEditMode = true)]
         public decimal Price { set; get; }
+
         [DisplayFormat(DataFormatString = "{0:#,###} VND", ApplyFormatInEditMode = true)]
         public decimal OriginalPrice { set; get; }
+
         public int Stock { set; get; }
         public int ViewCount { set; get; }
         public DateTime DateCreated { set; get; }
@@ -23,5 +26,6 @@ namespace eShopSolution.ViewModels.Catalog.Products
 
         public string SeoAlias { get; set; }
         public string LanguageId { set; get; }
+        public List<string> Categories { get; set; } = new List<string>();
     }
 }

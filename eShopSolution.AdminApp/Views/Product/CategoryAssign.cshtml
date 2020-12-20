@@ -1,0 +1,54 @@
+﻿@model eShopSolution.ViewModels.Catalog.Products.CategoryAssignRequest
+
+@{
+    ViewData["Title"] = "Gán danh mục";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- breadcrumbs -->
+<nav aria-label="breadcrumb" class="mb-4">
+    <ol class="breadcrumb my-breadcrumb">
+        <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Trang chủ</a></li>
+        <li class="breadcrumb-item active"><a asp-action="Index" asp-controller="User">Sản phẩm</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Gán danh mục</li>
+    </ol>
+</nav>
+<div>
+    <a class="btn btn-danger btn-style mt-4" asp-action="Index"><i class="fa fa-reply" aria-hidden="true"></i> Quay lại</a>
+</div>
+<hr />
+
+<!-- //breadcrumbs -->
+<!-- forms -->
+<section class="forms">
+    <div class="card card_border py-2 mb-4">
+        <div class="card-body">
+            <form asp-action="CategoryAssign">
+                @*<input type="hidden" asp-for="Id" />*@
+                @for (var i = 0; i < Model.Categories.Count; i++)
+                {
+                    <div class="form-row">
+                        <div class="form-group col-md-2">
+                            <label>
+                                <i>Tên danh mục:</i><b> @Model.Categories[i].Name</b>
+                            </label>
+                        </div>
+                        <div class="form-group col-md-4">
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                <i>Chọn danh mục:</i>
+                                <input type="checkbox" asp-for="Categories[i].Selected" />
+                                <input type="hidden" asp-for="Categories[i].Id" />
+                                <input type="hidden" asp-for="Categories[i].Name" />
+                                @*<input type="hidden" asp-for="Roles[i].Description" />*@
+                            </label>
+                        </div>
+                    </div>
+                }
+                <div class="form-row">
+                    <button type="submit" class="btn btn-primary btn-style mt-4"><i class="fa fa-floppy-o" aria-hidden="true"></i> Lưu lại</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
