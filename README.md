@@ -8,3 +8,7 @@
 - Microsoft.EntityFrameworkCore.Design
 - Microsoft.EntityFrameworkCore.Tools
 ## How to configure and run
+
+## I18N (Internalization)
+- References: https://medium.com/swlh/step-by-step-tutorial-to-build-multi-cultural-asp-net-core-web-app-3fac9a960c43
+- Source code: https://github.com/LazZiya/ExpressLocalizationSampleCore3
