@@ -26,7 +26,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.Domain", "2.Domain", "{D9
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hosts", "Hosts", "{CC314D56-8C20-475C-B3F8-C7A1A83F904D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShopSolution.AdminApp", "eShopSolution.AdminApp\eShopSolution.AdminApp.csproj", "{C7BBDDD8-93CD-4D81-B055-D334F53DE263}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShopSolution.AdminApp", "eShopSolution.AdminApp\eShopSolution.AdminApp.csproj", "{C7BBDDD8-93CD-4D81-B055-D334F53DE263}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eShopSolution.ApiIntegration", "eShopSolution.ApiIntegration\eShopSolution.ApiIntegration.csproj", "{ACA01479-F4CB-47B1-9F8B-4DF8648CB0A9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -62,6 +64,10 @@ Global
 		{C7BBDDD8-93CD-4D81-B055-D334F53DE263}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7BBDDD8-93CD-4D81-B055-D334F53DE263}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C7BBDDD8-93CD-4D81-B055-D334F53DE263}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACA01479-F4CB-47B1-9F8B-4DF8648CB0A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACA01479-F4CB-47B1-9F8B-4DF8648CB0A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACA01479-F4CB-47B1-9F8B-4DF8648CB0A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACA01479-F4CB-47B1-9F8B-4DF8648CB0A9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -74,6 +80,7 @@ Global
 		{591F5230-31EB-47CC-8441-7B1BFD6316C1} = {8EA101E4-E386-49F8-B1EC-D6FF7BF186F9}
 		{0394664A-443C-428F-91F0-CCD9E05D0344} = {CC314D56-8C20-475C-B3F8-C7A1A83F904D}
 		{C7BBDDD8-93CD-4D81-B055-D334F53DE263} = {CC314D56-8C20-475C-B3F8-C7A1A83F904D}
+		{ACA01479-F4CB-47B1-9F8B-4DF8648CB0A9} = {CC314D56-8C20-475C-B3F8-C7A1A83F904D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3FF0CBF5-3145-430C-AFE1-9F66746EC171}
